@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Home Page{% endblock %}
+{% block content %}
+<div class="container">
+    <h1>Sequence Alignment Tool</h1>
+</div>
+<div class="container">
+    <form action="{{ url_for("gfg")}}" method="post">
+        <div class="mb-3">
+            <label for="sequence1" class="form-label">First Sequence:</label>
+            <textarea class="form-control" id="sequence1" name="seq1" rows="6">ACTGGATC</textarea>
+        </div>
+        <div class="mb-3">
+            <label for="sequence2" class="form-label">Second Sequence:</label>
+            <textarea class="form-control" id="sequence2" name="seq2" rows="6">ACTGGATC</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Align</button>
+    </form>
+</div>
+{% endblock %}
