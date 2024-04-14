@@ -1,11 +1,34 @@
 {% extends "base.html" %}
+
 {% block title %}Home Page{% endblock %}
+
+{% block current %}
+<li class="nav-item">
+    <a class="nav-link active" href="" aria-current="page">Home</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Align Files</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="about">About</a>
+</li>
+{% endblock %}
+
 {% block content %}
 <div class="container">
     <h1>Sequence Alignment Tool</h1>
 </div>
+
 <div class="container">
-    <form action="{{ url_for("gfg")}}" method="post">
+    <form action="{{ url_for('gfg')}}" method="post">
+        <div class="mb-3">
+            <label for="align" class="form-label">Alignment Type</label>
+            <select name="align_type" id="align" class="form-select" aria-label="Alignment Type">
+                <option selected value="1">Global Alignment (default)</option>
+                <option value="2">Local Alignment</option>
+                <option value="3">Overlap Alignment</option>
+            </select>
+        </div>
         <div class="mb-3">
             <label for="sequence1" class="form-label">First Sequence:</label>
             <textarea class="form-control" id="sequence1" name="seq1" rows="6">ACTGGATC</textarea>
@@ -14,7 +37,31 @@
             <label for="sequence2" class="form-label">Second Sequence:</label>
             <textarea class="form-control" id="sequence2" name="seq2" rows="6">ACTGGATC</textarea>
         </div>
+        <div class="row mb-3 align-items-center">
+            <div class="col-auto">
+                <label for="match_reward" class="col-form-label">Match Reward</label>
+            </div>
+            <div class="col-md-1">
+                <input type="number" name="match_reward" id="match_reward" class="form-control" value="1" min="0" max="1000"/>
+            </div>
+            <div class="col-auto">
+                <label for="mismatch_penalty" class="col-form-label">Mismatch Penalty</label>
+            </div>
+            <div class="col-md-1">
+                <input type="number" name="mismatch_penalty" id="mismatch_penalty" class="form-control" value="1" min="0" max="1000"/>
+            </div>
+            <div class="col-auto">
+                <label for="indel_penalty" class="col-form-label">Indel Penalty</label>
+            </div>
+            <div class="col-md-1">
+                <input type="number" name="indel_penalty" id="indel_penalty" class="form-control" value="1" min="0" max="1000"/>
+            </div>
+        </div>
         <button type="submit" class="btn btn-primary">Align</button>
+        <div id="spinner" class="spinner-border spinner-border-sm" role="status" hidden="true">
+            <span id="spinner_alt" class="visually-hidden" hidden="true">Loading...</span>
+        </div>
+        
     </form>
 </div>
 {% endblock %}
