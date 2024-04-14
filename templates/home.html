@@ -2,6 +2,14 @@
 
 {% block title %}Home Page{% endblock %}
 
+{% block customcss %}
+<style>
+    input, textarea {
+        font-family: "Courier New", monospace;
+    }
+</style>
+{% endblock %}
+
 {% block current %}
 <li class="nav-item">
     <a class="nav-link active" href="" aria-current="page">Home</a>
@@ -24,18 +32,18 @@
         <div class="mb-3">
             <label for="align" class="form-label">Alignment Type</label>
             <select name="align_type" id="align" class="form-select" aria-label="Alignment Type">
-                <option selected value="1">Global Alignment (default)</option>
-                <option value="2">Local Alignment</option>
-                <option value="3">Overlap Alignment</option>
+                <option selected value="global">Global Alignment (default)</option>
+                <option value="local">Local Alignment</option>
+                <option value="overlap">Overlap Alignment</option>
             </select>
         </div>
         <div class="mb-3">
             <label for="sequence1" class="form-label">First Sequence:</label>
-            <textarea class="form-control" id="sequence1" name="seq1" rows="6">ACTGGATC</textarea>
+            <textarea class="form-control" id="sequence1" name="seq1" rows="6">AGCTAGGATC</textarea>
         </div>
         <div class="mb-3">
             <label for="sequence2" class="form-label">Second Sequence:</label>
-            <textarea class="form-control" id="sequence2" name="seq2" rows="6">ACTGGATC</textarea>
+            <textarea class="form-control" id="sequence2" name="seq2" rows="6">ACTGTCATC</textarea>
         </div>
         <div class="row mb-3 align-items-center">
             <div class="col-auto">

@@ -36,8 +36,9 @@ def GAbacktrack(match_reward, mismatch_penalty, indel_penalty, v, w):
             elif s[i][j] == s[i-1][j-1] + match:
                 Backtrack[i][j] = "↘"
     
-    for line in s:
-        print(line)
+    # Backtrack matrix output
+    #for line in s:
+        #print(line)
     
     return Backtrack, s[n-1][m-1]
 

@@ -1,4 +1,5 @@
 from flask import Flask, request, redirect, url_for, render_template
+from algorithm import GlobalAlignment
 
 app = Flask(__name__)
 
@@ -13,11 +14,15 @@ def gfg():
        align_type = request.form.get("align_type")
        seq1 = request.form.get("seq1")
        seq2 = request.form.get("seq2")
-       match_reward = request.form.get("match_reward")
-       mismatch_penalty = request.form.get("mismatch_penalty")
-       indel_penalty = request.form.get("indel_penalty")
+       match_reward = float(request.form.get("match_reward"))
+       mismatch_penalty = float(request.form.get("mismatch_penalty"))
+       indel_penalty = float(request.form.get("indel_penalty"))
 
-       return "Aligning sequences: " + seq1 + " " + seq2 + " with alignment type: " + align_type + " " + str(match_reward) + str(mismatch_penalty) + str(indel_penalty)
+       score, v, w = GlobalAlignment(match_reward, mismatch_penalty, indel_penalty, seq1, seq2)
+
+       return render_template("result.html", score=score, v=v, w=w, align_type=align_type, 
+                              seq1=seq1, seq2=seq2, match_reward=match_reward, 
+                              mismatch_penalty=mismatch_penalty, indel_penalty=indel_penalty)
     
     return render_template("home.html")
 
