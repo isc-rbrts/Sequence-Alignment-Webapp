@@ -6,9 +6,9 @@ def GlobalAlignment(match_reward, mismatch_penalty, indel_penalty, s, t):
     n = max(len(v), len(w))
     
     while len(v) < n:
-        v = "-" + v
+        v = "‑" + v
     while len(w) < n:
-        w = "-" + w
+        w = "‑" + w
         
     return score, v, w
 
@@ -50,7 +50,7 @@ def OutputGAv(backtrack, v, i, j):
     if backtrack[i][j] == "↓":
         return OutputGAv(backtrack, v, i - 1, j) + v[i - 1]
     elif backtrack[i][j] == "→":
-        return OutputGAv(backtrack, v, i, j - 1) + "-"
+        return OutputGAv(backtrack, v, i, j - 1) + "‑"
     else:
         return OutputGAv(backtrack, v, i - 1, j - 1) + v[i - 1]
     
@@ -60,7 +60,7 @@ def OutputGAw(backtrack, w, i, j):
     if j == 0:
         return ""
     if backtrack[i][j] == "↓":
-        return OutputGAw(backtrack, w, i - 1, j) + "-"
+        return OutputGAw(backtrack, w, i - 1, j) + "‑"
     elif backtrack[i][j] == "→":
         return OutputGAw(backtrack, w, i, j - 1) + w[j - 1]
     else:

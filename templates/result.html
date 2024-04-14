@@ -51,9 +51,13 @@
                         Alignment Type:
                         <p>{{ align_type }}</p>
                         First Sequence:
-                        <p>{{ seq1 }}</p>
+                        <div class="mb-3">
+                            <textarea class="form-control" rows="6">{{ seq1 }}</textarea>
+                        </div>
                         Second Squence:
-                        <p>{{ seq2 }}</p>
+                        <div class="mb-3">
+                            <textarea class="form-control" rows="6">{{ seq2 }}</textarea>
+                        </div>
                         Match Reward: <code>{{ match_reward }}</code><br>
                         Mismatch Penalty: <code>{{ mismatch_penalty }}</code><br>
                         Indel Penalty: <code>{{ indel_penalty }}</code>
