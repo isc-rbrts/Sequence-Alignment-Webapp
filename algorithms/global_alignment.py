@@ -1,4 +1,4 @@
-def GlobalAlignment(match_reward, mismatch_penalty, indel_penalty, s, t):
+def align(match_reward, mismatch_penalty, indel_penalty, s, t):
     backtrack, score = GAbacktrack(match_reward, mismatch_penalty, indel_penalty, s, t)
     v = OutputGAv(backtrack, s, len(s), len(t))
     w = OutputGAw(backtrack, t, len(s), len(t))

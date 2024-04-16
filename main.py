@@ -1,5 +1,5 @@
 from flask import Flask, request, redirect, url_for, render_template
-from algorithm import GlobalAlignment
+from algorithms import *
 
 app = Flask(__name__)
 
@@ -18,7 +18,7 @@ def gfg():
        mismatch_penalty = float(request.form.get("mismatch_penalty"))
        indel_penalty = float(request.form.get("indel_penalty"))
 
-       score, v, w = GlobalAlignment(match_reward, mismatch_penalty, indel_penalty, seq1, seq2)
+       score, v, w = global_alignment.align(match_reward, mismatch_penalty, indel_penalty, seq1, seq2)
 
        return render_template("result.html", score=score, v=v, w=w, align_type=align_type, 
                               seq1=seq1, seq2=seq2, match_reward=match_reward, 
