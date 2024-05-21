@@ -17,5 +17,12 @@
 {% block content %}
 <div class="container">
     <h1>About</h1>
+    <p>This is a sequence alignment web application that I have designed for bioinformatics uses. I originally
+    created this to have a convenient way of aligning DNA sequences while I was working with a secondary
+    structure predictive modeler. The aligner is optimized for FASTA formatted DNA or RNA sequences. File 
+    alignment is not currently supported. FASTA formatted protein sequences can be aligned but I have not
+    implemented scoring matrices as a parameter so results will be rudimentary.</p>
+    <p>The algorithm works by dynamically calculating the scores of all possible alignments based on the
+    scoring parameters that the user inputs. Note that all parameters must be greater than or equal to zero.</p>
 </div>
 {% endblock %}
